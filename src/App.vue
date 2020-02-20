@@ -1,20 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld
-      msg="Welcome to Your Vue.js App"
-      description="lorem ipsum blabajkdfjdkfj dfjdkalf djfakldjafkldjf dajfdklafj"
-    />
+    <InputText placeholder="Github username" v-model="username" />
+    <button @click="getRepository()" class="btn btn-primary">get user repositories</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import InputText from './components/common/InputText';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    InputText
+  },
+  data() {
+    return {
+      username: '',
+      repos: []
+    };
+  },
+  methods: {
+    getRepository() {
+      console.log(`get ${this.username} repository`);
+      fetch(`${process.env.VUE_APP_BASE_URL}/${this.username}/repos`)
+        .then(response => response.json())
+        .then(data => (this.repos = data));
+    }
   }
 };
 </script>
