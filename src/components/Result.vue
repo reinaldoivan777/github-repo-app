@@ -2,15 +2,15 @@
   <div class="my-3 container" v-show="repos.length > 0">
     <b-row>
       <b-col sm="12" md="4" class="mb-3" v-for="(repo, index) in repos" :key="index">
-        <router-link :to="{ name: 'detail', params: { repoName: repo.name, username } }">
-          <b-card class="h-100" :title="repo.name">
-            {{ repo.language }}
-            <b-card-text class="text-muted">Last update: {{ convertDate(repo.updated_at) }}</b-card-text>
-            <div class="overlay">
+        <b-card class="h-100" :title="repo.name">
+          {{ repo.language }}
+          <b-card-text class="text-muted">Last update: {{ convertDate(repo.updated_at) }}</b-card-text>
+          <div class="overlay">
+            <router-link :to="{ name: 'detail', params: { repoName: repo.name, username } }">
               <b-button class="middle" variant="secondary">SEE README</b-button>
-            </div>
-          </b-card>
-        </router-link>
+            </router-link>
+          </div>
+        </b-card>
       </b-col>
     </b-row>
   </div>

@@ -5,6 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "start": "serve -s dist",
+    "prod": "yarn build && yarn start",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
