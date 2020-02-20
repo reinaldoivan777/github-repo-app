@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <h1 class="mb-5">{{ $route.params.repoName }}</h1>
-    <markdown-it-vue class="md-body" :content="readme" />
+    <h1 class="mb-3">{{ $route.params.repoName }}</h1>
+    <b-card header="README.md" class="text-left">
+      <markdown-it-vue class="md-body" :content="readme" />
+    </b-card>
   </div>
 </template>
 
@@ -26,4 +28,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.card-header {
+  font-weight: 600;
+}
+</style>
