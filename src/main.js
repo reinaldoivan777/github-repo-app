@@ -3,6 +3,9 @@ import App from './App.vue';
 import dotenv from 'dotenv';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import VueRouter from 'vue-router';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Readme from './components/Readme';
 import Search from './components/Search';
 
@@ -14,6 +17,9 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueRouter);
+library.add(faArrowLeft);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 const router = new VueRouter({
   routes: [
