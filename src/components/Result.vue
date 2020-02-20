@@ -7,7 +7,7 @@
             {{ repo.language }}
             <b-card-text class="text-muted">Last update: {{ convertDate(repo.updated_at) }}</b-card-text>
             <div class="overlay">
-              <b-button class="middle" variant="secondary">SEE DETAILS</b-button>
+              <b-button class="middle" variant="secondary">SEE README</b-button>
             </div>
           </b-card>
         </router-link>

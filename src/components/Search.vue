@@ -5,7 +5,9 @@
       <input type="text" class="input-text" placeholder="Github Username" v-model="username" />
       <button type="submit" class="btn btn-primary">Get Repositories</button>
     </form>
-    <Result :repos="repos" :username="username" />
+    <Result v-if="!loading" :repos="repos" :username="username" />
+    <b-spinner v-else type="grow" variant="primary" label="Spinning" class="my-3"></b-spinner>
+    <h5 v-if="notFound" class="my-3">Result Not Found!</h5>
   </div>
 </template>
 
@@ -19,14 +21,22 @@ export default {
   data() {
     return {
       username: '',
-      repos: []
+      repos: [],
+      loading: false,
+      notFound: false
     };
   },
   methods: {
     getRepository() {
+      this.loading = true;
+      this.notFound = false;
       fetch(`${process.env.VUE_APP_BASE_URL}/users/${this.username}/repos`)
         .then(response => response.json())
-        .then(data => (this.repos = data));
+        .then(data => {
+          this.repos = data;
+          this.loading = false;
+          if (data.length === 0) this.notFound = true;
+        });
     }
   }
 };
