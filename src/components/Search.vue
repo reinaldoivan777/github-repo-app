@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-3">Search Github User's Repositories</h1>
     <form @submit.prevent="getRepository">
-      <input type="text" class="input-text" placeholder="Github Username" v-model="username" />
+      <input type="text" class="input-text mb-3" placeholder="Github Username" v-model="username" />
       <button type="submit" class="btn btn-primary">Get Repositories</button>
     </form>
     <Result v-if="!loading" :repos="repos" :username="username" />
