@@ -2,9 +2,9 @@
   <div class="my-3 container" v-show="repos.length > 0">
     <b-row>
       <b-col sm="12" md="4" class="mb-3" v-for="(repo, index) in repos" :key="index">
-        <b-card class="h-100" :title="repo.name">
+        <b-card :title="repo.name" class="card-height">
           {{ repo.language }}
-          <b-card-text class="text-muted">Last update: {{ convertDate(repo.updated_at) }}</b-card-text>
+          <b-card-text class="text-muted last-update">Last update: {{ convertDate(repo.updated_at) }}</b-card-text>
           <div class="overlay">
             <router-link :to="{ name: 'detail', params: { repoName: repo.name, username } }">
               <b-button class="middle" variant="secondary">SEE README</b-button>
@@ -75,5 +75,16 @@ a:hover {
 
 .card:hover .overlay {
   height: 100%;
+}
+
+.last-update {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.card-height {
+  height: 160px;
 }
 </style>
