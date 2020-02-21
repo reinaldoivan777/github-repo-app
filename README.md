@@ -1,24 +1,13 @@
 # git-repo-app
 
-## Project setup
-```
-yarn install
-```
+Follow this instruction to run the apps locally:
+1. Install all the dependencies with this command `yarn install`
+2. Run `yarn serve` command to start the application locally.
+3. The apps will be run on `localhost:8080`
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+If you want to make a production build, you can run this command: `yarn build`
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+You also can run the production build on your local machine by following this instruction:
+1. You need to install serve on your local machine using this command `npm install -g serve`, if you already install serve, you can skip this step, and go to step 2.
+2. Run `yarn prod`.
+3. The apps will be run on `localhost:5000`
