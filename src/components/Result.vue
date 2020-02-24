@@ -75,6 +75,7 @@ a:hover {
 
 .card:hover .overlay {
   height: 100%;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 3px, rgb(198, 198, 198) 5px);
 }
 
 .last-update {

@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-3">Search Github User's Repositories</h1>
     <form @submit.prevent="getRepository">
-      <input type="text" class="input-text mb-3" placeholder="Github Username" v-model="username" />
+      <input type="text" class="input-text mb-3" placeholder="Github Username" v-model="inputName" />
       <button type="submit" class="btn btn-primary">Get Repositories</button>
     </form>
     <Result v-if="!loading" :repos="repos" :username="username" />
@@ -20,6 +20,7 @@ export default {
   },
   data() {
     return {
+      inputName: '',
       username: '',
       repos: [],
       loading: false,
@@ -30,11 +31,13 @@ export default {
     getRepository() {
       this.loading = true;
       this.notFound = false;
+      this.username = this.inputName;
       fetch(`${process.env.VUE_APP_BASE_URL}/users/${this.username}/repos`)
         .then(response => response.json())
         .then(data => {
           this.repos = data;
           this.loading = false;
+          this.inputName = '';
           if (data.length === 0) this.notFound = true;
         });
     }
