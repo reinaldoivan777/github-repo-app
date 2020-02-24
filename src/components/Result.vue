@@ -1,7 +1,7 @@
 <template>
-  <div class="my-3 container" v-show="repos.length > 0">
+  <div v-show="repos.length > 0" class="my-3 container">
     <b-row>
-      <b-col sm="12" md="4" class="mb-3" v-for="(repo, index) in repos" :key="index">
+      <b-col v-for="(repo, index) in repos" :key="index" sm="12" md="4" class="mb-3">
         <b-card :title="repo.name" class="card-height">
           {{ repo.language }}
           <b-card-text class="text-muted last-update">Last update: {{ convertDate(repo.updated_at) }}</b-card-text>
@@ -20,18 +20,26 @@
 import moment from 'moment';
 export default {
   name: 'Result',
+  filters: {
+    moment: function(date) {
+      return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+    }
+  },
   props: {
-    username: String,
-    repos: Array
+    username: {
+      type: String,
+      default: ''
+    },
+    repos: {
+      type: Array,
+      default: function() {
+        return [];
+      }
+    }
   },
   methods: {
     convertDate: function(date) {
       return moment(date).format('DD/MM/YYYY');
-    }
-  },
-  filters: {
-    moment: function(date) {
-      return moment(date).format('MMMM Do YYYY, h:mm:ss a');
     }
   }
 };
